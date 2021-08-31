@@ -18,6 +18,14 @@ router.get('/', async (req: Request, res: Response) => {
 
 //@TODO
 //Add an endpoint to GET a specific resource by Primary Key
+router.get('/:id', async (req: Request, res: Response) => {
+    const id = req.params.id;
+    const item = await FeedItem.findByPk(id);
+    if (item)
+        res.status(200).send(item);
+    else
+        res.status(404).send('Item not found');
+})
 
 // update a specific resource
 router.patch('/:id', 
@@ -32,9 +40,9 @@ router.patch('/:id',
 router.get('/signed-url/:fileName', 
     requireAuth, 
     async (req: Request, res: Response) => {
-    let { fileName } = req.params;
-    const url = AWS.getPutSignedUrl(fileName);
-    res.status(201).send({url: url});
+        let { fileName } = req.params;
+        const url = AWS.getPutSignedUrl(fileName);
+        res.status(201).send({url: url});
 });
 
 // Post meta data and the filename after a file is uploaded 
