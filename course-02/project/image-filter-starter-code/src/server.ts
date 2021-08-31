@@ -1,5 +1,6 @@
 require('dotenv').config();
 import express from 'express';
+import { Request, Response } from 'express';
 import bodyParser from 'body-parser';
 import {filterImageFromURL, deleteLocalFiles} from './util/util';
 
@@ -35,12 +36,12 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
   
   // Root Endpoint
   // Displays a simple message to the user
-  app.get( "/", async ( req, res ) => {
+  app.get( "/", async ( req: Request, res: Response ) => {
     res.send("try GET /filteredimage?imageUrl={{}}")
   });
 
   // Filter Image Endpoint
-  app.get("/filteredimage", async (req, res) => {
+  app.get("/filteredimage", async (req: Request, res: Response) => {
     if (!req.headers || !req.headers['api-key'])
       return res.status(401).send({ message: 'No authorization headers.' });
 
