@@ -1,28 +1,27 @@
 {
 	"info": {
-		"_postman_id": "4bcf1909-8996-44b7-be35-b130ab03d12f",
+		"_postman_id": "17007476-2cc1-4f17-b9c8-ba4d0bffba09",
 		"name": "cloud-cdnd-c2-final",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "http://localhost:8082/filteredimage?image_url=https://timedotcom.files.wordpress.com/2019/03/kitten-report.jpg",
+			"name": "/filteredimage",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://{{HOST}}/filteredimage?image_url=https://timedotcom.files.wordpress.com/2019/03/kitten-report.jpg",
-					"protocol": "http",
+					"raw": "{{BASE_URL}}/filteredimage?imageUrl=https://images.unsplash.com/photo-1541963463532-d68292c34b19?ixlib=rb-1.2.1%26ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8%26w=1000%26q=80",
 					"host": [
-						"{{HOST}}"
+						"{{BASE_URL}}"
 					],
 					"path": [
 						"filteredimage"
 					],
 					"query": [
 						{
-							"key": "image_url",
-							"value": "https://timedotcom.files.wordpress.com/2019/03/kitten-report.jpg"
+							"key": "imageUrl",
+							"value": "https://images.unsplash.com/photo-1541963463532-d68292c34b19?ixlib=rb-1.2.1%26ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8%26w=1000%26q=80"
 						}
 					]
 				}
@@ -30,11 +29,30 @@
 			"response": []
 		}
 	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "key",
+				"value": "API-Key",
+				"type": "string"
+			},
+			{
+				"key": "value",
+				"value": "{{API_KEY}}",
+				"type": "string"
+			},
+			{
+				"key": "in",
+				"value": "header",
+				"type": "string"
+			}
+		]
+	},
 	"event": [
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "5887df52-1889-4e1f-82ee-054ab37b450a",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -44,7 +62,6 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "5e332dfe-c833-430b-b947-ab6c00311c28",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -54,10 +71,12 @@
 	],
 	"variable": [
 		{
-			"id": "1df3d31a-de30-494b-a3d0-f1228dd8713c",
-			"key": "HOST",
-			"value": "localhost:8082",
-			"type": "string"
+			"key": "BASE_URL",
+			"value": "http://localhost:8082"
+		},
+		{
+			"key": "API_KEY",
+			"value": "MyFunnyValentine"
 		}
 	]
 }
